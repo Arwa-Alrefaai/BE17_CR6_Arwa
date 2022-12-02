@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BigEvents{% endblock %}
+
+{% block body %}
+    <h1>Create new BigEvents</h1>
+
+    {{ include('big_events/_form.html.twig') }}
+
+    <a href="{{ path('app_big_events_index') }}" class="btn btn-primary">back to list</a>
+{% endblock %}
