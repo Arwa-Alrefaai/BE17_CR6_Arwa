@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilterController!{% endblock %}
+
+{% block body %}
+<div class="container">
+     <div class="row row-cols-3 g-4"> 
+        {% for event in events %}
+        <div class="card">
+           <div class="card-header text-bg-secondary " style="text-align: center;"  >{{ event.type }}</div>
+           <div class="card-body">
+            <img src="{{ asset('pictures/' ~ event.image ) }}"  class="card-img-top" alt="">
+            <h5 class="card-title">{{ event.name }}</h5><hr>
+            <p class="card-text"><b> The Event Date :</b>{{ event.date ? event.date|date('Y-m-d') : '' }}</p>
+            <p class="card-text"><b>Adress : </b>{{ event.street }}</p>
+            <p class="card-text">{{ event.zipCode }} {{ event.cityName }}</p>
+            <div class="card-footer">
+                <div><b>Start :</b>{{ event.startTime ? event.startTime|date('H:i') : '' }}</div><hr>
+            </div>
+             <a href="{{ path('app_big_events_show', {'id': event.id}) }}" class="btn btn-primary"> Show Details </a>
+             <a href="{{ path('app_big_events_edit', {'id': event.id}) }}" class="btn btn-success" style="margin-top:5px ;"> Edite </a>
+            {# <a class='btn btn-danger'>{{ include('big_events/_delete_form.html.twig') }}</a>  #}
+
+        </div>
+        
+        </div>  
+        {% endfor %}
+     </div> 
+</div>
+
+{% endblock %}
